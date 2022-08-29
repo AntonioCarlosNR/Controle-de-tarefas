@@ -31,6 +31,7 @@ namespace Controle_de_tarefas.Classes
                     dr.Read();
                     id = dr.GetInt32(0);
                     descricao = dr.GetString(1);
+                    horaEstimada = dr.GetTimeSpan(2);
                     categoria = dr.GetString(3);
                     situacao = dr.GetString(4);                    
 
@@ -43,16 +44,17 @@ namespace Controle_de_tarefas.Classes
                 this.Mensagem = "Erro com o Banco de dados!!";
             }
         }
-        public string cadastrar(string descricao, string categoria, string situacao)
+        public string cadastrar(string descricao, string categoria, string situacao, string horaEstimada)
         {
             Existe = false;
 
-            cmd.CommandText = "insert into TB_Tarefas (Ds_Tarefa, Ct_CategoriaTarefa,St_Tarefa) values (@descricao,@categoria,@situacao);";
+            cmd.CommandText = "insert into TB_Tarefas (Ds_Tarefa, Ct_CategoriaTarefa,St_Tarefa, Dt_tempoTarefa) values (@descricao,@categoria,@situacao, @horaEstimada);";
             
             //cmd.CommandText = "insert into TB_Cliente (Nm_Cliente,Ds_Endereco,Ds_email,Ds_Senha,Nm_telefone,Nm_Documento) values (@nome,@endereco,@email,@senha,@telefone,@cpf);";
             cmd.Parameters.AddWithValue("@descricao", descricao);
             cmd.Parameters.AddWithValue("@categoria", categoria);
             cmd.Parameters.AddWithValue("@situacao", situacao);
+            cmd.Parameters.AddWithValue("@horaEstimada", horaEstimada);
 
             try
             {
@@ -70,15 +72,16 @@ namespace Controle_de_tarefas.Classes
 
             return Mensagem;
         }
-        public string atualizar(int id, string descricao, string categoria, string situacao)
+        public string atualizar(int id, string descricao, string categoria, string situacao, string horaEstimada)
         {
             Existe = false;
 
-            cmd.CommandText = "update TB_Tarefas set Ds_Tarefa = @descricao ,Ct_CategoriaTarefa = @categoria, St_Tarefa = @situacao where ID_Cliente = @id";
+            cmd.CommandText = "update TB_Tarefas set Ds_Tarefa = @descricao ,Ct_CategoriaTarefa = @categoria, St_Tarefa = @situacao, Dt_tempoTarefa = @horaEstimada where ID_Cliente = @id";
 
             cmd.Parameters.AddWithValue("@descricao", descricao);
             cmd.Parameters.AddWithValue("@categoria", categoria);
             cmd.Parameters.AddWithValue("@situacao", situacao);
+            cmd.Parameters.AddWithValue("@horaEstimada", horaEstimada);
             cmd.Parameters.AddWithValue("@id", id);
 
             try

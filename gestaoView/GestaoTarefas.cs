@@ -38,24 +38,9 @@ namespace Controle_de_tarefas.gestaoView
                 textBoxDescricao.Text = controle.descricao;
                 comboBoxCategoria.Text = controle.categoria;
                 comboBoxSituacao.Text = controle.situacao;
+                TimeSpan ts = controle.horaEstimada;
+                dateTimePickerEstimado.Value = Convert.ToDateTime(ts.ToString());
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Controle controle = new Controle();
-           
-            string mensagem = controle.cadastrar(textBoxDescricao.Text, comboBoxCategoria.Text, comboBoxSituacao.Text);
-
-            if (controle.Existe)
-            {
-                MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(controle.Mensagem);
-            }
-            textBoxDescricao.Clear();
         }
 
         private void voltar_Click(object sender, EventArgs e)
@@ -72,8 +57,9 @@ namespace Controle_de_tarefas.gestaoView
         {
             Controle controle = new Controle();
             int id = Convert.ToInt32(textBoxIdTarefa.Text);
+            string horaEstimada = Convert.ToString(dateTimePickerEstimado.Value);
 
-            string mensagem = controle.atualizar(id,textBoxDescricao.Text, comboBoxCategoria.Text, comboBoxSituacao.Text);
+            string mensagem = controle.atualizar(id,textBoxDescricao.Text, comboBoxCategoria.Text, comboBoxSituacao.Text, horaEstimada);
 
             if (controle.Existe)
             {
@@ -107,7 +93,9 @@ namespace Controle_de_tarefas.gestaoView
         {
             Controle controle = new Controle();
 
-            string mensagem = controle.cadastrar(textBoxDescricao.Text, comboBoxCategoria.Text, comboBoxSituacao.Text);
+            string horaEstimada = Convert.ToString(dateTimePickerEstimado.Value);
+
+            string mensagem = controle.cadastrar(textBoxDescricao.Text, comboBoxCategoria.Text, comboBoxSituacao.Text, horaEstimada);
 
             if (controle.Existe)
             {
@@ -118,6 +106,11 @@ namespace Controle_de_tarefas.gestaoView
                 MessageBox.Show(controle.Mensagem);
             }
             textBoxDescricao.Clear();
+        }
+
+        private void categoria_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

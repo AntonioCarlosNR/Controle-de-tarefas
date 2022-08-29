@@ -14,5 +14,6 @@ namespace Controle_de_tarefas.Modelo
         public string descricao { get; set; }
         public string situacao { get; set; }
         public string categoria { get; set; }
+        public TimeSpan horaEstimada { get; set; }
     }
 }

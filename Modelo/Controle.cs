@@ -19,21 +19,23 @@ namespace Controle_de_tarefas.Modelo
             descricao = tarefa.descricao;
             categoria = tarefa.categoria;
             situacao = tarefa.situacao;
-            
+            horaEstimada = tarefa.horaEstimada;
+
+
         }
 
-        public string cadastrar(string descricao, string categoria, string situacao)
+        public string cadastrar(string descricao, string categoria, string situacao, string horaEstimada)
         {
-            this.Mensagem = tarefa.cadastrar(descricao, categoria, situacao);
+            this.Mensagem = tarefa.cadastrar(descricao, categoria, situacao, horaEstimada);
             if (tarefa.Existe)
             {
                 this.Existe = true;
             }
             return Mensagem;
         }
-        public string atualizar(int id, string descricao, string categoria, string situacao)
+        public string atualizar(int id, string descricao, string categoria, string situacao, string horaEstimada)
         {
-            this.Mensagem = tarefa.atualizar(id ,descricao, categoria, situacao);
+            this.Mensagem = tarefa.atualizar(id ,descricao, categoria, situacao, horaEstimada);
             if (tarefa.Existe)
             {
                 this.Existe = true;

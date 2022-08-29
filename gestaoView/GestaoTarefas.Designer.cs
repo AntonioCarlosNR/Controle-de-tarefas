@@ -43,6 +43,7 @@ namespace Controle_de_tarefas.gestaoView
             this.excluir = new System.Windows.Forms.Button();
             this.voltar = new System.Windows.Forms.Button();
             this.criar = new System.Windows.Forms.Button();
+            this.dateTimePickerEstimado = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // idtarefa
@@ -93,7 +94,7 @@ namespace Controle_de_tarefas.gestaoView
             // 
             this.tempoestimado.AutoSize = true;
             this.tempoestimado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tempoestimado.Location = new System.Drawing.Point(33, 157);
+            this.tempoestimado.Location = new System.Drawing.Point(33, 158);
             this.tempoestimado.Name = "tempoestimado";
             this.tempoestimado.Size = new System.Drawing.Size(161, 28);
             this.tempoestimado.TabIndex = 5;
@@ -103,17 +104,18 @@ namespace Controle_de_tarefas.gestaoView
             // 
             this.categoria.AutoSize = true;
             this.categoria.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.categoria.Location = new System.Drawing.Point(33, 219);
+            this.categoria.Location = new System.Drawing.Point(33, 226);
             this.categoria.Name = "categoria";
             this.categoria.Size = new System.Drawing.Size(101, 28);
             this.categoria.TabIndex = 6;
             this.categoria.Text = "Categoria:";
+            this.categoria.Click += new System.EventHandler(this.categoria_Click);
             // 
             // situacao
             // 
             this.situacao.AutoSize = true;
             this.situacao.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.situacao.Location = new System.Drawing.Point(235, 219);
+            this.situacao.Location = new System.Drawing.Point(235, 226);
             this.situacao.Name = "situacao";
             this.situacao.Size = new System.Drawing.Size(91, 28);
             this.situacao.TabIndex = 7;
@@ -127,7 +129,7 @@ namespace Controle_de_tarefas.gestaoView
             "Manutenção",
             "Desenvolvimento",
             "Suporte"});
-            this.comboBoxCategoria.Location = new System.Drawing.Point(33, 251);
+            this.comboBoxCategoria.Location = new System.Drawing.Point(33, 260);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(180, 36);
             this.comboBoxCategoria.TabIndex = 8;
@@ -141,7 +143,7 @@ namespace Controle_de_tarefas.gestaoView
             "Aberta",
             "Em Andamento",
             "Fechada"});
-            this.comboBoxSituacao.Location = new System.Drawing.Point(235, 251);
+            this.comboBoxSituacao.Location = new System.Drawing.Point(235, 260);
             this.comboBoxSituacao.Name = "comboBoxSituacao";
             this.comboBoxSituacao.Size = new System.Drawing.Size(181, 36);
             this.comboBoxSituacao.TabIndex = 9;
@@ -186,11 +188,24 @@ namespace Controle_de_tarefas.gestaoView
             this.criar.UseVisualStyleBackColor = true;
             this.criar.Click += new System.EventHandler(this.criar_Click);
             // 
+            // dateTimePickerEstimado
+            // 
+            this.dateTimePickerEstimado.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerEstimado.CalendarMonthBackground = System.Drawing.SystemColors.ActiveCaption;
+            this.dateTimePickerEstimado.CustomFormat = "hh:mm tt";
+            this.dateTimePickerEstimado.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerEstimado.Location = new System.Drawing.Point(33, 189);
+            this.dateTimePickerEstimado.Name = "dateTimePickerEstimado";
+            this.dateTimePickerEstimado.ShowUpDown = true;
+            this.dateTimePickerEstimado.Size = new System.Drawing.Size(161, 27);
+            this.dateTimePickerEstimado.TabIndex = 16;
+            // 
             // GestaoTarefas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 443);
+            this.Controls.Add(this.dateTimePickerEstimado);
             this.Controls.Add(this.criar);
             this.Controls.Add(this.voltar);
             this.Controls.Add(this.excluir);
@@ -228,5 +243,6 @@ namespace Controle_de_tarefas.gestaoView
         private System.Windows.Forms.Button excluir;
         private System.Windows.Forms.Button voltar;
         private System.Windows.Forms.Button criar;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEstimado;
     }
 }
